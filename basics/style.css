@@ -1,10 +1,133 @@
+main {
+    position: relative;
+    z-index: 10; /* must be higher than .clouds (z-index: 3) */
+  }
+  
+  .msg-container {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .button-container {
+    position: relative;
+    z-index: 10;
+  }
+  
+@keyframes move-background {
+    from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  @-webkit-keyframes move-background {
+    from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+  @-moz-keyframes move-background {    
+      from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+      @-webkit-keyframes move-background {
+      from {
+          -webkit-transform: translate3d(0px, 0px, 0px);
+      }
+      to { 
+          -webkit-transform: translate3d(1000px, 0px, 0px);
+      }
+  }
+  
+  .background-container{
+      position: fixed;
+      top: 0;
+      left:0;
+      bottom: 0;
+      right: 0;
+  }
+  
+  .stars {
+   background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+   position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+        z-index: 0;
+  }
+  
+  .twinkling{
+      width:10000px;
+      height: 100%;
+      background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+      background-size: 1000px 1000px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      
+      -moz-animation:move-background 70s linear infinite;
+    -ms-animation:move-background 70s linear infinite;
+    -o-animation:move-background 70s linear infinite;
+    -webkit-animation:move-background 70s linear infinite;
+    animation:move-background 70s linear infinite;
+      
+  }
+  
+  .clouds{
+      width:10000px;
+      height: 100%;
+      background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+      background-size: 1000px 1000px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+  
+     -moz-animation:move-background 150s linear infinite;
+    -ms-animation:move-background 150s linear infinite;
+    -o-animation:move-background 150s linear infinite;
+    -webkit-animation:move-background 150s linear infinite;
+    animation:move-background 150s linear infinite;
+  }
+  img{
+    height: 70vh;
+    width:70vh;
+    position: absolute;
+    z-index: 3;
+    right: 20px;
+  }
+
+
+/* starting main css */
+
 *{
     margin: 0;
     padding: 0;
 }
 
+h1{
+    text-decoration:underline; 
+    cursor:pointer; 
+    height: 1vmax;
+    color: white;
+    font-family: 'Alumni Sans SC',sans-serif;
+}
 body{
-    background-color: #93a8ac;
+    background-color: #abc4ff;
     text-align: center ;
 }
 .container{
@@ -17,17 +140,84 @@ body{
 }
 
 .game{
-    /* height: 60vmin;} */
-    width: 60vmin;}
-/*    display: flex;
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 1.5vmin;
-    
-}*/
+}
 
 .box{
     height: 18vmin;
     width: 18vmin;
+    border-radius: 10%;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+    font-size: 8vmin;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    background-color: #ecf8f8;
+    color: #000;
 }
+
+.box:hover{
+    background-color: #70d6ff;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* center horizontally */
+    gap: 1rem;            /* space between buttons */
+    margin-top: 2rem;
+  }
+  
+  #new-game,
+  #rst-button {
+    padding: 1rem;
+    font-family: 'Alumni Sans SC', sans-serif;
+    font-size: 1.2rem;
+    background-color: #d8e2dc;
+    color: black;
+    border-radius: 10%;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+
+#rst-button:hover{
+    background-color: #70d6ff;
+}
+
+#new-game:hover{
+    background-color: #70d6ff;
+}
+
+#msg{
+    color: white;
+    font-size: 6vmin;
+}
+
+.msg-container {
+    /* display: block; */
+     /* 'display: 10vmin' is invalid; maybe you meant width/height? */
+    position: absolute;
+    top: 68vh;       /* relative to viewport height */
+    left: 30vw;      /* relative to viewport width */
+    /* removed bottom since absolute + top/bottom can conflict */
+}
+
+
+.hide{
+    display: none;
+}
+
+
+/* background css*/
+
+
+
+  
